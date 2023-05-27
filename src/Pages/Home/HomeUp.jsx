@@ -28,7 +28,7 @@ const HomeUp = () => {
                     <button className="btn btn-primary">Read More</button>
                 </div>
                 <div className='w-1/2'>
-                    <img src="https://i.ibb.co/Fxh2dT1/cccc.jpg" className='rounded-md' alt="" />
+                    <img src="https://i.ibb.co/Fxh2dT1/cccc.jpg" className='rounded-md' />
                 </div>
             </section>
             <section className='my-8 px-36'>
@@ -55,7 +55,7 @@ const HomeUp = () => {
 
 
                 </div>
-                <div className='w-1/2 border  shadow-xl drop-shadow-2xl bg-base-100 px-4 py-4 rounded-md'>
+                <div className='w-1/2 border  shadow-md shadow-indigo-500/50 bg-base-100 px-4 py-4 rounded-md'>
                     <div className="form-control ">
                         <label className="label">
                             <span className="label-text">Email</span>
