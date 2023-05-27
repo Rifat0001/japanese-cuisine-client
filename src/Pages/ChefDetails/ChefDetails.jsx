@@ -22,7 +22,7 @@ const ChefDetails = () => {
             </section>
             <h1 className="text-4xl text-primary text-center font-bold">Recipes</h1>
             {
-                chefDetals.map(recipe => <p>{recipe.name}</p>)
+                chefDetals.recipes.map(recipe => <p key={recipe.id}>{recipe.title}</p>)
             }
         </div>
     );
