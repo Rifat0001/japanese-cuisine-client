@@ -11,7 +11,7 @@ const HomeUp = () => {
             .catch(error => console.error(error))
     }, [])
     return (
-        <div className='px-36'>
+        <div >
             <section className="hero min-h-screen bg-base-200">
                 <div className="hero-content text-center">
                     <div className="max-w-lg">
@@ -21,7 +21,7 @@ const HomeUp = () => {
                     </div>
                 </div>
             </section>
-            <section className='flex justify-between items-center  py-20'>
+            <section className='flex justify-between items-center px-36 py-20'>
                 <div className='w-1/2 me-20'>
                     <h1 className="text-4xl text-primary font-bold">About Us</h1>
                     <p className="py-6 text-black">Japanese cuisine is renowned for its delicate flavors, exquisite presentation, and emphasis on fresh, high-quality ingredients. It reflects a harmonious blend of tradition and innovation, rooted in centuries of culinary artistry. Rice, seafood, vegetables, and soy-based products form the foundation of Japanese cuisine.</p>
@@ -31,7 +31,7 @@ const HomeUp = () => {
                     <img src="https://i.ibb.co/Fxh2dT1/cccc.jpg" className='rounded-md' alt="" />
                 </div>
             </section>
-            <section className='my-8'>
+            <section className='my-8 px-36'>
                 <h1 className="text-4xl text-primary font-bold text-center mb-4">Our Chefs</h1>
                 <div className='grid grid-cols-3'>
                     {
@@ -42,7 +42,7 @@ const HomeUp = () => {
                 </div>
 
             </section>
-            <section className='flex justify-between items-center  py-20'>
+            <section className='flex justify-between items-center px-36  py-20'>
                 <div className='w-1/2 me-20'>
                     <h1 className="text-4xl text-primary font-bold">Contact Us</h1>
                     <p className="py-6 text-black">Have a question, feedback, or need assistance? Our Contact Us section is designed to make it easy for you to reach out and get the support you need. Our dedicated support team is here to assist you with any inquiries or concerns you may have.</p>
