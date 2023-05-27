@@ -1,6 +1,6 @@
 
 import './App.css'
-import MainLayout from './Layout/MainLayout'
+
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <MainLayout></MainLayout>
+
     </>
   )
 }
