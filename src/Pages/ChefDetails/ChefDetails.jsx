@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import Recipe from '../Recipe/Recipe';
 
 const ChefDetails = () => {
     const { id } = useParams();
@@ -21,9 +22,12 @@ const ChefDetails = () => {
                 </div>
             </section>
             <h1 className="text-4xl text-primary text-center font-bold">Recipes</h1>
-            {
-                chefDetals.recipes.map(recipe => <p key={recipe.id}>{recipe.title}</p>)
-            }
+            <div className='grid grid-cols-3'>
+                {
+                    chefDetals.recipes.map(recipe => <Recipe recipe={recipe} key={recipe.id}></Recipe>)
+                }
+            </div>
+
         </div>
     );
 };
