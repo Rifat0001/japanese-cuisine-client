@@ -49,9 +49,9 @@ const Register = () => {
 
     return (
         <div>
-            <div className="py-20 ">
+            <div className="md:py-20 py-6">
                 <h1 className='text-center font-bold my-4 text-3xl text-primary'>Register here</h1>
-                <Form onSubmit={handleRegister} className="card-body w-1/4 mx-auto rounded shadow-lg shadow-indigo-500/50">
+                <Form onSubmit={handleRegister} className="card-body md:w-1/4 w-full mx-auto rounded shadow-lg shadow-indigo-500/50">
                     <div className="form-control ">
                         <label className="label">
                             <span className="label-text">Name</span>

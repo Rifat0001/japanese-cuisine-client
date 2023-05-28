@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 
@@ -8,6 +8,11 @@ const Login = () => {
     console.log(user);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    // for navigate after login 
+    const navigate = useNavigate();
+    const location = useLocation();
+    // for navigate the current visit page 
+    const from = location.state?.from?.pathname || '/';
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -19,6 +24,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 setSuccess('User Login Successfully');
                 setError('');
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setError(error.message);
@@ -30,6 +36,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error.message)
@@ -41,6 +48,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error.message)
@@ -49,9 +57,9 @@ const Login = () => {
 
     return (
         <div>
-            <div className="py-20 ">
+            <div className="md:py-20 ">
                 <h1 className='text-center font-bold my-4 text-3xl text-primary'>Login here</h1>
-                <Form onSubmit={handleLogin} className="card-body w-1/4 mx-auto rounded shadow-lg shadow-indigo-500/50">
+                <Form onSubmit={handleLogin} className="card-body md:w-1/4 w-full mx-auto rounded shadow-lg shadow-indigo-500/50">
                     <div className="form-control ">
                         <label className="label">
                             <span className="label-text">Email</span>

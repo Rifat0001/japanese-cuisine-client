@@ -7,28 +7,34 @@ const githubProvider = new GithubAuthProvider();
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-
+    const [loading, setLoading] = useState(true);
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const signIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
     const googleSign = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     }
 
     const githubSign = () => {
+        setLoading(true);
         return signInWithPopup(auth, githubProvider);
     }
 
     const handleUpdateProfile = (loggedUser, name, photoUrl) => {
+        setLoading(true);
         updateProfile(loggedUser, {
             displayName: name, photoURL: photoUrl
         })
@@ -45,6 +51,7 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, loggedUser => {
             console.log('logged user', loggedUser)
             setUser(loggedUser);
+            setLoading(false);
         })
         return () => {
             unSubscribe();
