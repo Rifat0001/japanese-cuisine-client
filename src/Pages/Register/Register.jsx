@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Form, Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { createUserWithEmailAndPassword, signInWithPhoneNumber } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithPhoneNumber, updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const { createUser } = useContext(AuthContext);
+    const { createUser, handleUpdateProfile } = useContext(AuthContext);
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -35,6 +35,7 @@ const Register = () => {
             .then(result => {
                 const createUser = result.user;
                 console.log(createUser);
+                handleUpdateProfile(createUser, name, photo);
                 setError('');
                 setSuccess('Successfully Registered !');
                 event.target.reset();
@@ -45,6 +46,7 @@ const Register = () => {
             })
 
     }
+
     return (
         <div>
             <div className="py-20 ">

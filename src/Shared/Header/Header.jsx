@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
+import './Header.css';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Header = () => {
@@ -11,7 +14,7 @@ const Header = () => {
     }
     return (
         <div>
-            <div className="navbar bg-indigo-50 md:px-36 px-4">
+            <div className="navbar  bg-indigo-50 md:px-36 px-4">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -51,14 +54,25 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {user ?
-                        <> <button onClick={handleLogOut} className="btn btn-primary">Log out</button> </>
-                        : <a className="btn btn-primary">
-                            <Link to="/login" >Login</Link>
-                        </a>
-                    }
                 </div>
-            </div >
+                {
+                    user && <>
+
+                        <a id="not-clickable" className=''>
+                            <img className='w-10  rounded-full border-indigo-700 me-4' src={user.photoURL} alt="" />
+                        </a>
+                        <Tooltip anchorSelect="#not-clickable" place="left">
+                            <button>{user.displayName}</button>
+                        </Tooltip></>
+
+                }
+                {user ?
+                    <> <button onClick={handleLogOut} className="btn btn-outline btn-primary ms-8">Log out</button> </>
+                    : <a className="btn btn-primary ms-8">
+                        <Link to="/login" >Login</Link>
+                    </a>
+                }
+            </div>
         </div >
     );
 };

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import app from '../Firebase/Firebase.init';
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -17,6 +17,18 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
+    const handleUpdateProfile = (loggedUser, name, photoUrl) => {
+        updateProfile(loggedUser, {
+            displayName: name, photoURL: photoUrl
+        })
+            .then(() => {
+                console.log('user name updated');
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
     // for check is the user is sign in or not? 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, loggedUser => {
@@ -29,7 +41,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        user, createUser, signIn, logOut
+        user, createUser, signIn, logOut, handleUpdateProfile
     }
     return (
         <div>

@@ -3,7 +3,8 @@ import { Form, Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, user } = useContext(AuthContext);
+    console.log(user);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const handleLogin = event => {
