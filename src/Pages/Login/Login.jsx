@@ -4,7 +4,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
-    const { signIn, user, googleSign } = useContext(AuthContext);
+    const { signIn, user, googleSign, githubSign } = useContext(AuthContext);
     console.log(user);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -35,6 +35,18 @@ const Login = () => {
                 console.log(error.message)
             })
     }
+
+    const handleGithub = () => {
+        githubSign()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
     return (
         <div>
             <div className="py-20 ">
@@ -58,7 +70,7 @@ const Login = () => {
                         <button className="btn btn-primary">Login</button>
                         <div className="divider">OR</div>
                         <button onClick={handleGoogle} className='btn btn-outline btn-success'> <FaGoogle className='me-2 text-2xl'></FaGoogle> Login with Google</button>
-                        <button className='btn btn-outline btn-black mt-4'>   <FaGithub className='me-2 text-2xl'></FaGithub> Login with Github</button>
+                        <button onClick={handleGithub} className='btn btn-outline btn-black mt-4'>   <FaGithub className='me-2 text-2xl'></FaGithub> Login with Github</button>
                         <small className='mt-2'>New to Japanese Cuisine? <Link to='/register' className='text-primary'>Create New Account</Link> </small>
                     </div>
                 </Form>
