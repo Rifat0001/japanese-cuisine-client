@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Form, Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
-    const { signIn, user } = useContext(AuthContext);
+    const { signIn, user, googleSign } = useContext(AuthContext);
     console.log(user);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -23,6 +24,16 @@ const Login = () => {
                 setError(error.message);
             })
 
+    }
+    const handleGoogle = () => {
+        googleSign()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
     return (
         <div>
@@ -45,7 +56,9 @@ const Login = () => {
                         <p className='text-red-500 mb-2'>{error}</p>
                         <p className='text-emerald-500 mb-2'>{success}</p>
                         <button className="btn btn-primary">Login</button>
-                        <hr />
+                        <div className="divider">OR</div>
+                        <button onClick={handleGoogle} className='btn btn-outline btn-success'> <FaGoogle className='me-2 text-2xl'></FaGoogle> Login with Google</button>
+                        <button className='btn btn-outline btn-black mt-4'>   <FaGithub className='me-2 text-2xl'></FaGithub> Login with Github</button>
                         <small className='mt-2'>New to Japanese Cuisine? <Link to='/register' className='text-primary'>Create New Account</Link> </small>
                     </div>
                 </Form>
