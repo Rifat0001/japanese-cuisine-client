@@ -45,6 +45,7 @@ const Login = () => {
                         <p className='text-red-500 mb-2'>{error}</p>
                         <p className='text-emerald-500 mb-2'>{success}</p>
                         <button className="btn btn-primary">Login</button>
+                        <hr />
                         <small className='mt-2'>New to Japanese Cuisine? <Link to='/register' className='text-primary'>Create New Account</Link> </small>
                     </div>
                 </Form>
